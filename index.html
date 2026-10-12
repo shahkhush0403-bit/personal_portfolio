@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khush Shah | Indian Cosmic Portfolio</title>
+
+<style>
+:root {
+  --bg: #080d18;
+  --panel: #101a29;
+  --fg: #f7edda;
+  --muted: #b4b5c0;
+  --gold: #e7b65c;
+  --violet: #a99aff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* NAVIGATION */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 17px 6%;
+  border-bottom: 1px solid #d4a65348;
+  background: #080d18ed;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav a {
+  font-size: 12px;
+  color: var(--muted);
+  transition: color .3s;
+}
+
+.nav a:hover {
+  color: var(--gold);
+}
+
+#theme {
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--gold);
+  padding: 8px 12px;
+}
+
+/* HERO SECTION */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 65px 8% 45px;
+  min-height: 460px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 75% 45%, #49366b50, transparent 43%),
+    radial-gradient(ellipse at 15% 100%, #a66b2730, transparent 40%),
+    var(--bg);
+}
+
+.eyebrow,
+.section-label {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(48px, 8vw, 86px);
+  letter-spacing: -3px;
+  line-height: .94;
+  margin: 20px 0;
+  animation: fadeUp 1s ease both;
+}
+
+h1 em {
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.subtitle {
+  font-size: 16px;
+}
+
+.intro {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 420px;
+  margin-top: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #111827;
+  padding: 12px 17px;
+  border-radius: 30px;
+  font-size: 12px;
+  border: 1px solid var(--gold);
+  transition: .25s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px #e7b65c40;
+}
+
+.btn.alt {
+  background: transparent;
+  color: var(--fg);
+  border-color: #e7b65c80;
+}
+
+/* COSMIC ANIMATION */
+.cosmos {
+  height: 300px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.planet {
+  position: absolute;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    #fff2cb,
+    #e8b55b 24%,
+    #8e5b3e 55%,
+    #171a35 75%
+  );
+  box-shadow:
+    0 0 55px #c18b4660,
+    0 0 100px #8b6dff20;
+  animation: breathe 5s ease-in-out infinite;
+}
+
+.om {
+  position: absolute;
+  z-index: 1;
+  font-size: 43px;
+  color: #3b2d50;
+  text-shadow: 0 0 12px #f5d08a;
+}
+
+.ring {
+  position: absolute;
+  width: 285px;
+  height: 100px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  transform: rotate(-25deg);
+  animation: spin 14s linear infinite;
+}
+
+.ring.two {
+  width: 315px;
+  height: 130px;
+  border-color: var(--violet);
+  transform: rotate(35deg);
+  animation-direction: reverse;
+}
+
+.ring.three {
+  width: 220px;
+  height: 235px;
+  border-style: dashed;
+  border-color: #c6a66b60;
+}
+
+.star {
+  position: absolute;
+  color: var(--gold);
+  animation: twinkle 2.5s infinite;
+}
+
+.sanskrit {
+  position: absolute;
+  right: 0;
+  top: 12%;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--gold);
+  opacity: .8;
+}
+
+/* GENERAL SECTIONS */
+section.content {
+  padding: 38px 8%;
+  border-top: 1px solid #d4a65338;
+  scroll-margin-top: 75px;
+}
+
+.section-label {
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.muted {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* ABOUT */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.fact {
+  padding: 15px 10px;
+  background: linear-gradient(140deg, #172033, #0b111c);
+  border: 1px solid #d5ad5a35;
+  border-radius: 10px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.fact strong {
+  display: block;
+  color: var(--gold);
+  font-size: 25px;
+  margin-bottom: 6px;
+}
+
+/* SKILLS */
+.skills {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.skill {
+  padding: 9px 13px;
+  border: 1px solid #d5ad5a58;
+  border-radius: 25px;
+  font-size: 12px;
+  transition: .2s;
+}
+
+.skill:hover {
+  background: var(--gold);
+  color: #15131a;
+  transform: translateY(-2px);
+}
+
+/* PROJECTS */
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 17px 0;
+}
+
+.filter {
+  padding: 8px 13px;
+  border-radius: 25px;
+  border: 1px solid #d5ad5a66;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.filter.active {
+  background: var(--gold);
+  color: #10131b;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+}
+
+.project {
+  border: 1px solid #d5ad5a44;
+  background: linear-gradient(150deg, #152034, #0b111b);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: .25s;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.art {
+  height: 125px;
+  display: grid;
+  place-items: center;
+  font-size: 43px;
+  color: var(--gold);
+  background:
+    radial-gradient(circle, #8b6dff32, transparent 65%),
+    #101525;
+}
+
+.project:nth-child(2) .art {
+  color: #c5a9ff;
+  background:
+    radial-gradient(circle, #8258c944, transparent 65%),
+    #101323;
+}
+
+.project:nth-child(3) .art {
+  background:
+    radial-gradient(circle, #c88a4233, transparent 65%),
+    #191623;
+}
+
+.projectbody {
+  padding: 15px;
+}
+
+.project h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.project p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.tags {
+  color: var(--gold);
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* EDUCATION */
+.edu {
+  border: 1px solid #d5ad5a48;
+  border-radius: 10px;
+  background: #101827;
+  padding: 18px;
+  line-height: 1.8;
+  font-size: 13px;
+  max-width: 600px;
+}
+
+/* CONTACT */
+.contact {
+  margin: 25px 5%;
+  padding: 30px;
+  border-radius: 12px;
+  background: linear-gradient(115deg, #e9c37f, #c18a44);
+  color: #171724;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact:after {
+  content: "✺";
+  position: absolute;
+  right: 20px;
+  top: -30px;
+  font-size: 140px;
+  color: #5e3c2428;
+}
+
+.contact .section-label {
+  color: #54391f;
+}
+
+.contact .muted {
+  color: #493824;
+  max-width: 450px;
+}
+
+.contact .btn {
+  background: #111827;
+  color: #f3cc82;
+  border-color: #111827;
+  position: relative;
+  z-index: 1;
+}
+
+footer {
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--muted);
+  border-top: 1px solid #d4a65338;
+}
+
+/* LIGHT THEME */
+.light {
+  --bg: #f5eddd;
+  --panel: #fff8e9;
+  --fg: #211a25;
+  --muted: #655c62;
+  --gold: #98621b;
+}
+
+.light header {
+  background: #f5eddded;
+}
+
+.light .hero {
+  background:
+    radial-gradient(ellipse at 75% 45%, #b6a4d755, transparent 45%),
+    var(--bg);
+}
+
+.light .fact,
+.light .project,
+.light .edu {
+  background: #fff8e9;
+}
+
+.light .art {
+  background-color: #e9deca;
+}
+
+/* ANIMATIONS */
+@keyframes spin {
+  to { rotate: 360deg; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: .35; transform: scale(.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  header {
+    flex-wrap: wrap;
+    padding: 14px 5%;
+  }
+
+  .nav {
+    order: 3;
+    width: 100%;
+    gap: 15px;
+  }
+
+  .nav a { font-size: 11px; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 42px 7% 25px;
+  }
+
+  .cosmos { height: 240px; }
+
+  .about { grid-template-columns: 1fr; }
+
+  .facts { gap: 6px; }
+
+  .fact { padding: 11px 7px; }
+
+  .projects { grid-template-columns: 1fr; }
+
+  .project {
+    display: grid;
+    grid-template-columns: 115px 1fr;
+  }
+
+  .art {
+    height: 100%;
+    min-height: 135px;
+  }
+
+  .projectbody { padding: 12px; }
+
+  .contact { padding: 23px; }
+
+  footer { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="brand" href="#home">ॐ &nbsp; Khush Shah</a>
+
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button id="theme" aria-label="Toggle light and dark theme">
+    ☼ / ☾
+  </button>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow">Final-year BSc Computer Science</div>
+
+    <h1>Khush <em>Shah</em></h1>
+
+    <div class="subtitle">
+      Aspiring Data Scientist &amp; AI/ML Enthusiast
+    </div>
+
+    <p class="intro">
+      I build data-driven solutions, explore AI/ML, and love
+      turning ideas into real-world impact.
+    </p>
+
+    <div class="actions">
+      <a class="btn" href="#projects">Explore My Work ↗</a>
+      <a class="btn alt" href="#contact">Let's Connect ✉</a>
+    </div>
+
+    <div class="eyebrow" style="margin-top:22px">
+      ✦ ज्ञान · विज्ञान · अनंत ✦
+    </div>
+  </div>
+
+  <div class="cosmos" aria-label="Animated celestial illustration">
+    <div class="ring"></div>
+    <div class="ring two"></div>
+    <div class="ring three"></div>
+    <div class="planet"></div>
+    <div class="om">ॐ</div>
+
+    <span class="star" style="left:7%;top:20%">✧</span>
+    <span class="star" style="right:8%;bottom:16%">✦</span>
+
+    <span class="sanskrit">
+      सत्यम्<br>
+      ज्ञानम्<br>
+      अनन्तम्
+    </span>
+  </div>
+</section>
+
+<section class="content" id="about">
+  <div class="section-label">01 — About Me</div>
+
+  <div class="about">
+    <div>
+      <h2>
+        Curious Mind.<br>
+        <span style="color:var(--gold);font-style:italic">
+          Constant Learner.
+        </span>
+      </h2>
+
+      <p class="muted">
+        I'm a final-year BSc Computer Science student interested
+        in Data Science, AI/ML, Python and software development.
+        I enjoy solving problems, building projects, and exploring
+        how technology can make a real difference.
+      </p>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <strong>✧</strong>
+        Final Year<br>BSc Computer Science
+      </div>
+
+      <div class="fact">
+        <strong>☼</strong>
+        Interests<br>Data &amp; AI/ML
+      </div>
+
+      <div class="fact">
+        <strong>◎</strong>
+        My Goal<br>Build useful things
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="skills">
+  <div class="section-label">02 — Skills &amp; Technologies</div>
+
+  <h2>My Toolkit</h2>
+
+  <p class="muted">
+    Tradition inspires curiosity. Technology gives it form.
+  </p>
+
+  <div class="skills">
+    <span class="skill">🐍 Python</span>
+    <span class="skill">☕ Java</span>
+    <span class="skill">JavaScript</span>
+    <span class="skill">C</span>
+    <span class="skill">C++</span>
+    <span class="skill">Data Science</span>
+    <span class="skill">Machine Learning</span>
+    <span class="skill">HTML</span>
+    <span class="skill">CSS</span>
+    <span class="skill">SQL</span>
+  </div>
+</section>
+
+<section class="content" id="projects">
+  <div class="section-label">03 — Featured Projects</div>
+
+  <h2>Where Ideas Take Form</h2>
+
+  <p class="muted">
+    Choose a category to filter the project cards.
+  </p>
+
+  <div class="filters">
+    <button class="filter active" data-kind="all">All</button>
+    <button class="filter" data-kind="data">Data Science</button>
+    <button class="filter" data-kind="ai">AI / ML</button>
+    <button class="filter" data-kind="web">Web</button>
+  </div>
+
+  <div class="projects">
+    <article class="project" data-kind="data">
+      <div class="art">▥</div>
+      <div class="projectbody">
+        <h3>Data Analysis Dashboard</h3>
+        <p>
+          Explore real-world datasets and visualize meaningful patterns.
+        </p>
+        <div class="tags">PYTHON · PANDAS · DATA VIZ</div>
+      </div>
+    </article>
+
+    <article class="project" data-kind="ai">
+      <div class="art">✺</div>
+      <div class="projectbody">
+        <h3>ML Prediction Model</h3>
+        <p>
+          Build and evaluate a machine-learning model for prediction.
+        </p>
+        <div class="tags">PYTHON · ML · EVALUATION</div>
+      </div>
+    </article>
+
+    <article class="project" data-kind="web">
+      <div class="art">☼</div>
+      <div class="projectbody">
+        <h3>Indian Heritage Explorer</h3>
+        <p>
+          A concept for discovering Indian monuments and cultural heritage.
+        </p>
+        <div class="tags">HTML · CSS · JAVASCRIPT</div>
+      </div>
+    </article>
+  </div>
+
+  <p class="muted" style="font-size:11px;margin-top:15px">
+    Sample project concepts: replace these with your actual projects
+    and GitHub links.
+  </p>
+</section>
+
+<section class="content" id="education">
+  <div class="section-label">04 — Education</div>
+
+  <h2>My Journey</h2>
+
+  <div class="edu">
+    <div class="eyebrow">2024 — 2027</div>
+
+    <strong style="font-size:16px">
+      BSc Computer Science
+    </strong>
+
+    <div class="muted">Final-year student · India</div>
+
+    <hr style="border:0;border-top:1px solid #d5ad5a40;margin:12px 0">
+
+    <div class="muted">
+      Current focus: programming fundamentals, data science and AI/ML.
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-label">05 — Get In Touch</div>
+
+  <h2>Let's Build<br>Something Amazing.</h2>
+
+  <p class="muted">
+    Open to internships, collaboration, projects and opportunities to learn.
+  </p>
+
+  <a class="btn" href="mailto:your.email@example.com">
+    Say Hello ↗
+  </a>
+
+  <p class="muted" style="font-size:11px;margin-top:12px">
+    Replace the example email with your real email address.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <span>ॐ &nbsp; KHUSH SHAH</span>
+  <span>Where tradition meets technology.</span>
+  <a href="#home">Back to top ↑</a>
+</footer>
+
+<script>
+// Light and dark theme toggle
+document.getElementById("theme").addEventListener("click", () => {
+  document.body.classList.toggle("light");
+});
+
+// Interactive project filters
+const filters = document.querySelectorAll(".filter");
+
+filters.forEach(button => {
+  button.addEventListener("click", () => {
+    filters.forEach(item => {
+      item.classList.toggle("active", item === button);
+    });
+
+    document.querySelectorAll(".project").forEach(project => {
+      const show =
+        button.dataset.kind === "all" ||
+        project.dataset.kind === button.dataset.kind;
+
+      project.classList.toggle("hidden", !show);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
